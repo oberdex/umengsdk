@@ -1,0 +1,15 @@
+{
+    "name": "oberdex/youmengsdk",
+    "description": "友盟统计sdk封装",
+    "require": {
+        "hanson/foundation-sdk": "^3.0",
+        "guzzlehttp/guzzle": "^6.4"
+    },
+    "license": "mit",
+    "authors": [
+        {
+            "name": "Jacky",
+            "email": "jacky@5amax.com"
+        }
+    ]
+}
