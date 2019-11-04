@@ -1,7 +1,7 @@
 <?php
 
 
-namespace oberdex\youmengsdk;
+namespace oberdex\umengsdk;
 
 
 use com\alibaba\openapi\client\APIId;
@@ -15,7 +15,7 @@ use com\alibaba\umeng\uapp\param\UmengUappGetAppListResult;
 class Umeng extends Api
 {
     /**
-     * 获取所有app数量 
+     * 获取所有app数量
      */
     public function getAppList()
     {

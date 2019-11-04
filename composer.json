@@ -1,14 +1,19 @@
 {
-    "name": "oberdex/youmengsdk",
-    "description": "友盟统计sdk封装",
-    "require": {
-        "hanson/foundation-sdk": "^3.0"
-    },
-    "license": "mit",
-    "authors": [
-        {
-            "name": "Jacky",
-            "email": "jacky@5amax.com"
-        }
-    ]
+  "name": "oberdex/umengsdk",
+  "description": "友盟统计sdk封装",
+  "license": "mit",
+  "authors": [
+    {
+      "name": "Jacky",
+      "email": "jacky@5amax.com"
+    }
+  ],
+  "require": {
+    "hanson/foundation-sdk": "^3.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "oberdex\\umengsdk\\": "src/"
+    }
+  }
 }

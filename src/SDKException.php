@@ -1,7 +1,7 @@
 <?php
 
 
-namespace oberdex\youmengsdk;
+namespace oberdex\umengsdk;
 
 
 class SDKException extends \Exception

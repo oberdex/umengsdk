@@ -1,7 +1,7 @@
 <?php
 
 
-namespace oberdex\youmengsdk;
+namespace oberdex\umengsdk;
 
 
 use Hanson\Foundation\Foundation;
@@ -11,9 +11,9 @@ use Hanson\Foundation\Foundation;
  * @package oberdex\youmengsdk
  * @Method getAppList 获取所有app
  */
-class SDK extends Foundation
+class Dispatch extends Foundation
 {
-    private $sdk;
+    private $umeng;
 
     /**
      * SDK constructor.
@@ -23,14 +23,14 @@ class SDK extends Foundation
     {
         parent::__construct($config);
         if (isset($config['page']) && isset($config['perPage'])) {
-            $this->sdk = new Umeng($config['apiKey'], $config['apiSecurity'], $config['page'], $config['perPage']);
+            $this->umeng = new Umeng($config['apiKey'], $config['apiSecurity'], $config['page'], $config['perPage']);
         } else {
-            $this->sdk = new Umeng($config['apiKey'], $config['apiSecurity']);
+            $this->umeng = new Umeng($config['apiKey'], $config['apiSecurity']);
         }
     }
 
     public function __call($name, $arguments)
     {
-        $this->sdk->{$name}(...$arguments);
+        $this->umeng->{$name}(...$arguments);
     }
 }

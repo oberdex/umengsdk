@@ -1,7 +1,7 @@
 <?php
 
 
-namespace oberdex\youmengsdk;
+namespace oberdex\umengsdk;
 
 use com\alibaba\openapi\client\policy\RequestPolicy;
 use Hanson\Foundation\AbstractAPI;
