@@ -11,8 +11,10 @@ use Hanson\Foundation\Foundation;
  * @package oberdex\youmengsdk
  * @Method getAppList 获取所有app
  * @Method getTodayData 获取今天统计数据
+ * @Method getDurations 平均单次使用时长
+ * @Method getChannelData 获取渠道维度信息
  */
-class Dispatch extends Foundation
+class UmengSDK extends Foundation
 {
     private $umengsdk;
 
