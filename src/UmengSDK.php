@@ -7,7 +7,7 @@ namespace oberdex\umengsdk;
 use Hanson\Foundation\Foundation;
 
 /**
- * Class Dispatch
+ * Class UmengSDK
  * @package oberdex\youmengsdk
  * @Method getAppList 获取所有app
  * @Method getTodayData 获取今天统计数据
