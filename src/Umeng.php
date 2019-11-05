@@ -157,19 +157,23 @@ class Umeng extends Api
             $this->syncAPIClient->send($request, $result, $this->reqPolicy);
             $channels = $result->getChannelInfos();
             $data = [];
-            foreach ($channels as $channel) {
-                $data[] = [
-                    'duration' => $channel->getDuration(),
-                    'date' => $channel->getDate(),
-                    'totalUserRate' => $channel->getTotalUserRate(),
-                    'id' => $channel->getId(),
-                    'launch' => $channel->getLaunch(),
-                    'channel' => $channel->getChannel(),
-                    'totalUser' => $channel->getTotalUser(),
-                    'activeUser' => $channel->getActiveUser(),
-                    'newUser' => $channel->getNewUser(),
-                ];
+            if ($channels) {
+                foreach ($channels as $channel) {
+                    $data[] = [
+                        'duration' => $channel->getDuration(),
+                        'date' => $channel->getDate(),
+                        'totalUserRate' => $channel->getTotalUserRate(),
+                        'id' => $channel->getId(),
+                        'launch' => $channel->getLaunch(),
+                        'channel' => $channel->getChannel(),
+                        'totalUser' => $channel->getTotalUser(),
+                        'activeUser' => $channel->getActiveUser(),
+                        'newUser' => $channel->getNewUser(),
+                    ];
+                }
             }
+            $data['page'] = $result->getPage();
+            $data['totalPage'] = $result->getTotalPage();
             unset($result);
             return $data;
         } catch (OceanException $e) {
