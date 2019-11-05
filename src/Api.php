@@ -11,17 +11,6 @@ use Hanson\Foundation\AbstractAPI;
 
 class Api extends AbstractAPI
 {
-
-    /**
-     * 页号，从1开始
-     * @var
-     */
-    protected $page;
-    /**
-     * 每页显示数量,每页显示数量（最大100）
-     * @var int
-     */
-    protected $perPage;
     protected $reqPolicy;
     protected $apiKey;
     protected $apiSecurity;
