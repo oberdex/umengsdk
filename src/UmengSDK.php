@@ -24,7 +24,9 @@ class UmengSDK extends Foundation
      */
     public function __construct($config)
     {
-        $config['debug'] = false;
+        if (!isset($config['debug'])) {
+            $config['debug'] = false;
+        }
         parent::__construct($config);
         $this->umengsdk = new Umeng($config['apiKey'], $config['apiSecurity']);
     }
