@@ -13,6 +13,8 @@
   },
   "autoload": {
     "psr-4": {
+      "com\\alibaba\\": "src/com/alibaba",
+      "com\\umeng\\": "src/com/umeng",
       "oberdex\\umengsdk\\": "src/"
     }
   }

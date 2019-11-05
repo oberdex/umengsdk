@@ -3,7 +3,10 @@
 
 namespace oberdex\umengsdk;
 
+use com\alibaba\openapi\client\policy\ClientPolicy;
+use com\alibaba\openapi\client\policy\DataProtocol;
 use com\alibaba\openapi\client\policy\RequestPolicy;
+use com\alibaba\openapi\client\SyncAPIClient;
 use Hanson\Foundation\AbstractAPI;
 
 class Api extends AbstractAPI
@@ -22,24 +25,33 @@ class Api extends AbstractAPI
     protected $reqPolicy;
     protected $apiKey;
     protected $apiSecurity;
-    /**
-     * api版本
-     * @var int
-     */
-    protected $api_version = 1;
+    protected $syncAPIClient;
+    protected $clientPolicy;
+
+    const NAME_SPACE = 'com.umeng.uapp';
+    const API_VERSION = 1;
+    const SERVICE_HOST = 'gateway.open.umeng.com';
 
     /**
      * Api constructor.
      * @param $apiKey
      * @param $apiSecurity
      */
-    public function __construct($apiKey, $apiSecurity, $page = 1, $perPage = 100)
+    public function __construct($apiKey, $apiSecurity)
     {
         $this->apiKey = $apiKey;
         $this->apiSecurity = $apiSecurity;
-        $this->page = $page;
-        $this->perPage = $perPage;
-        $this->reqPolicy = new RequestPolicy ();
+        if (empty($this->clientPolicy)) {
+            $this->clientPolicy = new ClientPolicy ($this->apiKey, $this->apiSecurity, self::SERVICE_HOST);
+        }
+        if (empty($this->syncAPIClient)) {
+            $this->syncAPIClient = new SyncAPIClient($this->clientPolicy);
+        }
+        if (empty($this->reqPolicy)) {
+            $this->reqPolicy = new RequestPolicy ();
+        }
+        $this->reqPolicy->responseProtocol = DataProtocol::param2;
+        $this->reqPolicy->requestProtocol = DataProtocol::param2;
         $this->reqPolicy->httpMethod = "POST";
         $this->reqPolicy->needAuthorization = false;
         $this->reqPolicy->requestSendTimestamp = false;
