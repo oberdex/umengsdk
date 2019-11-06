@@ -126,8 +126,7 @@ class Umeng extends Api
             $request->requestEntity = $param;
             $result = new UmengUappGetDurationsResult();
             $this->syncAPIClient->send($request, $result, $this->reqPolicy);
-            $avg = $result->getAverage();
-            return $avg;
+            return $result->getAverage();
         } catch (OceanException $e) {
             throw new SDKException($e->getMessage(), $e->getCode());
         }
