@@ -13,6 +13,8 @@ use Hanson\Foundation\Foundation;
  * @Method getTodayData 获取今天统计数据
  * @Method getDurations 平均单次使用时长
  * @Method getChannelData 获取渠道维度信息
+ * @Method getRetentions 获取App新增用户留存率
+ * @Method getActiveUsers 获取App活跃用户数
  */
 class UmengSDK extends Foundation
 {

@@ -2,6 +2,8 @@
 
 namespace com\umeng\uapp\param;
 
+use ArrayObject;
+
 class UmengUappGetActiveUsersResult
 {
 
