@@ -291,27 +291,32 @@ class Umeng extends Api
      * @param string $endDate 结束日期（yyyy-MM-dd格式） 2021-06-01
      * @param int $type 异常类型（1. java/ios崩溃 2. native崩溃 3.ANR 4.自定义异常 5.卡顿）
      * @return mixed
+     * @throws SDKException
      */
     public function getApmResult($appKey, $startDate = null, $endDate = null, $type = 1)
     {
-        if (is_null($startDate)) {
-            $startDate = date('Y-m-d');
-        }
-        if (is_null($endDate)) {
-            $endDate = date('Y-m-d');
-        }
-        $param = new UmengQuickbirdServerGetStatTrendParam();
-        $param->setDataSourceId($appKey);
-        $param->setType($type);
-        $param->setStartDate($startDate);
-        $param->setEndDate($endDate);
-        $request = new APIRequest ();
-        $apiId = new APIId (self::NAME_APM_SPACE, "umeng.quickbird.server.getStatTrend", self::API_VERSION);
-        $request->apiId = $apiId;
-        $request->requestEntity = $param;
+        try {
+            if (is_null($startDate)) {
+                $startDate = date('Y-m-d');
+            }
+            if (is_null($endDate)) {
+                $endDate = date('Y-m-d');
+            }
+            $param = new UmengQuickbirdServerGetStatTrendParam();
+            $param->setDataSourceId($appKey);
+            $param->setType($type);
+            $param->setStartDate($startDate);
+            $param->setEndDate($endDate);
+            $request = new APIRequest ();
+            $apiId = new APIId (self::NAME_APM_SPACE, "umeng.quickbird.server.getStatTrend", self::API_VERSION);
+            $request->apiId = $apiId;
+            $request->requestEntity = $param;
 
-        $result = new UmengQuickbirdServerGetStatTrendResult();
-        $this->syncAPIClient->send($request, $result, $this->reqPolicy);
-        return $result->getData();
+            $result = new UmengQuickbirdServerGetStatTrendResult();
+            $this->syncAPIClient->send($request, $result, $this->reqPolicy);
+            return $result->getData();
+        } catch (OceanException $e) {
+            throw new SDKException($e->getMessage(), $e->getCode());
+        }
     }
 }
