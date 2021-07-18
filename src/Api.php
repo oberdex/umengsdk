@@ -18,6 +18,7 @@ class Api extends AbstractAPI
     protected $clientPolicy;
 
     const NAME_SPACE = 'com.umeng.uapp';
+    const NAME_APM_SPACE = 'com.umeng.uapm';
     const API_VERSION = 1;
     const SERVICE_HOST = 'gateway.open.umeng.com';
 
