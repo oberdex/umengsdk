@@ -1,6 +1,7 @@
 <?php
 
 namespace com\umeng\uapm\param;
+use ArrayObject;
 use com\alibaba\openapi\client\entity\ByteArray;
 
 class UmengQuickbirdServerGetStatTrendResult

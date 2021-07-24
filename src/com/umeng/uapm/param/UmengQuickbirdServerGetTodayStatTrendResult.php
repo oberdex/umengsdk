@@ -1,7 +1,9 @@
 <?php
 
 namespace com\umeng\uapm\param;
+
 use ArrayObject;
+
 class UmengQuickbirdServerGetTodayStatTrendResult
 {
 
