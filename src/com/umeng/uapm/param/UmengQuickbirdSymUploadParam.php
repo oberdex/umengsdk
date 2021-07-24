@@ -1,7 +1,7 @@
 <?php
 
 namespace com\umeng\uapm\param;
-
+use com\alibaba\openapi\client\entity\ByteArray;
 class UmengQuickbirdSymUploadParam
 {
 

@@ -1,7 +1,7 @@
 <?php
 
 namespace com\umeng\uapm\param;
-
+use ArrayObject;
 class UmengQuickbirdServerGetTodayStatTrendResult
 {
 
@@ -16,10 +16,10 @@ class UmengQuickbirdServerGetTodayStatTrendResult
         return $this->data;
     }
 
+
     /**
-     * 设置
-     * @param array include @see UmengQuickbirdOpenTodayTrendResult[] $data
-     * 此参数必填     */
+     * @param UmengQuickbirdOpenTodayTrendResult $data
+     */
     public function setData(UmengQuickbirdOpenTodayTrendResult $data)
     {
         $this->data = $data;
@@ -28,6 +28,9 @@ class UmengQuickbirdServerGetTodayStatTrendResult
 
     private $stdResult;
 
+    /**
+     * @param $stdResult
+     */
     public function setStdResult($stdResult)
     {
         $this->stdResult = $stdResult;
