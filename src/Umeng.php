@@ -314,15 +314,21 @@ class Umeng extends Api
 
             $result = new UmengQuickbirdServerGetStatTrendResult();
             $this->syncAPIClient->send($request, $result, $this->reqPolicy);
-            $data = $result->getData();
-            return [
-                'timePoint' => $data->timePoint,
-                'errorCount' => $data->errorCount,
-                'errorRate' => $data->errorRate,
-                'affectedUserCount' => $data->affectedUserCount,
-                'affectedUserRate' => $data->affectedUserRate,
-            ];
+            $resultData = $result->getData();
+            $data = [];
+            foreach ($resultData as $datum) {
+                $data[] = [
+                    'timePoint' => $datum->getTimePoint(),
+                    'errorCount' => $datum->getErrorCount(),
+                    'errorRate' => $datum->getErrorRate(),
+                    'affectedUserCount' => $datum->getAffectedUserCount(),
+                    'affectedUserRate' => $datum->getAffectedUserRate(),
+                ];
+            }
+            return $data;
         } catch (OceanException $e) {
+            throw new SDKException($e->getMessage(), $e->getCode());
+        } catch (\Exception $e) {
             throw new SDKException($e->getMessage(), $e->getCode());
         }
     }
