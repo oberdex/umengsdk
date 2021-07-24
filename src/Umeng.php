@@ -314,7 +314,14 @@ class Umeng extends Api
 
             $result = new UmengQuickbirdServerGetStatTrendResult();
             $this->syncAPIClient->send($request, $result, $this->reqPolicy);
-            return $result->getData();
+            $data = $result->getData();
+            return [
+                'timePoint' => $data->timePoint,
+                'errorCount' => $data->errorCount,
+                'errorRate' => $data->errorRate,
+                'affectedUserCount' => $data->affectedUserCount,
+                'affectedUserRate' => $data->affectedUserRate,
+            ];
         } catch (OceanException $e) {
             throw new SDKException($e->getMessage(), $e->getCode());
         }
